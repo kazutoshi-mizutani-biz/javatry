@@ -214,11 +214,26 @@ public class Step01VariableTest extends PlainTestCase {
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
      * your question here (ここにあなたの質問を):
-     * 
+     * メソッド終了時の変数 sea の中身は？
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
     public void test_variable_yourExercise() {
         // write your code here
+        StringBuilder sea = new StringBuilder("mermaid");
+        int land = 516;
+        ++land;
+        helpMethodTestVariableYourExercise(sea,land);
+        ++land;
+        log(sea);
+//        correct answer => mermaid518519
+    }
+    private void helpMethodTestVariableYourExercise(StringBuilder sea,int land){
+        ++land;
+        sea.append(land);
+        String river = sea.toString();
+        ++land;
+        sea.append(land);
+        sea = new StringBuilder(river);
     }
 }
