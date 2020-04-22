@@ -78,7 +78,8 @@ public class Step04MethodTest extends PlainTestCase {
         if (!land) {
             sea = sea + mutable.getStageName().length();
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 910
+//        correct answer => 910
     }
 
     private int helloMutable(int sea, Boolean land, St4MutableStage piari) {
