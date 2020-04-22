@@ -48,8 +48,8 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBooth booth = new TicketBooth();
         booth.buyOneDayPassport(10000);
         Integer sea = booth.getSalesProceeds();
-        log(sea); // your answer? => 10000
-//        correct answer => 10000
+        log(sea); // your answer? => 10000 -> 7400
+//        correct answer => 10000 -> 7400
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -63,8 +63,8 @@ public class Step05ClassTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_class_howToUse_wrongQuantity() {
         Integer sea = doTest_class_ticket_wrongQuantity();
-        log(sea); // your answer? => 9
-//        correct answer => 9
+        log(sea); // your answer? => 9 -> 10
+//        correct answer => 9 -> 10
     }
 
     private Integer doTest_class_ticket_wrongQuantity() {
