@@ -167,7 +167,8 @@ public class Step01VariableTest extends PlainTestCase {
         StringBuilder sea = new StringBuilder("harbor");
         int land = 415;
         helpMethodArgumentVariable(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor416
+//        correct answer => harbor
     }
 
     private void helpMethodArgumentVariable(StringBuilder sea, int land) {
