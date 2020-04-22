@@ -42,7 +42,7 @@ public class Step02IfForTest extends PlainTestCase {
             sea = 2001;
         }
         log(sea); // your answer? => 2001
-//        correct answer => 2001
+        //        correct answer => 2001
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -54,7 +54,7 @@ public class Step02IfForTest extends PlainTestCase {
             sea = 7;
         }
         log(sea); // your answer? => 7
-//        correct answer => 7
+        //        correct answer => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -70,7 +70,7 @@ public class Step02IfForTest extends PlainTestCase {
             sea = 9;
         }
         log(sea); // your answer? => 7
-//        correct answer => 7
+        //        correct answer => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -95,7 +95,7 @@ public class Step02IfForTest extends PlainTestCase {
             sea = 10;
         }
         log(sea); // your answer? => 10
-//        correct answer => 10
+        //        correct answer => 10
     }
 
     // ===================================================================================
@@ -112,7 +112,7 @@ public class Step02IfForTest extends PlainTestCase {
             }
         }
         log(sea); // your answer? => null
-//        correct answer => dockside
+        //        correct answer => dockside
 
     }
 
@@ -124,7 +124,7 @@ public class Step02IfForTest extends PlainTestCase {
             sea = stage;
         }
         log(sea); // your answer? => magiclamp
-//        correct answer => magiclamp
+        //        correct answer => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -141,7 +141,7 @@ public class Step02IfForTest extends PlainTestCase {
             }
         }
         log(sea); // your answer? => hangar
-//        correct answer => hangar
+        //        correct answer => hangar
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -158,7 +158,7 @@ public class Step02IfForTest extends PlainTestCase {
         });
         String sea = sb.toString();
         log(sea); // your answer? => broadway
-//        correct answer => dockside
+        //        correct answer => dockside
     }
 
     // ===================================================================================
@@ -172,12 +172,12 @@ public class Step02IfForTest extends PlainTestCase {
         // write if-for here
         List<String> stageList = prepareStageList();
         List<String> stageListContainA = new ArrayList<String>();
-        for(int i = 0; i < stageList.size(); i++){
-            if(stageList.get(i).contains("a")){
+        for (int i = 0; i < stageList.size(); i++) {
+            if (stageList.get(i).contains("a")) {
                 stageListContainA.add(stageList.get(i));
             }
         }
-        for(int i = 0; i < stageListContainA.size(); i++){
+        for (int i = 0; i < stageListContainA.size(); i++) {
             log(stageListContainA.get(i));
         }
     }
@@ -192,10 +192,13 @@ public class Step02IfForTest extends PlainTestCase {
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
         String sea = null;
-        String[] seaA = {""};
-        Boolean[] flag = {true};
+        String[] seaA = { "" };
+        // TODO mizutani もう少し意味の付いた変数名にしたいですね by jflute (2020/04/22)
+        // チャットでも投げましたが、booleanこそ意味が重要です。
+        // なんとかフラグというboolean変数名: https://jflute.hatenadiary.jp/entry/20181013/flgornuance
+        Boolean[] flag = { true };
         stageList.forEach(stage -> {
-            if(flag[0]) {
+            if (flag[0]) {
                 if (stage.startsWith("br")) {
                     return;
                 }
@@ -208,6 +211,8 @@ public class Step02IfForTest extends PlainTestCase {
         sea = seaA[0];
         log(sea); // should be same as before-fix
         //愚直に実装してみたが汚いので想定解を知りたい
+        // TODO mizutani [ふぉろー]まあ、ここは汚くなるので仕方がないです。元々のコードのロジックが汚いですからね by jflute (2020/04/22)
+        // ただ、for文とforEach()メソッドは、特徴があって違うものだってことがわかってもらえればと。適材適所。
     }
 
     /**
@@ -224,19 +229,21 @@ public class Step02IfForTest extends PlainTestCase {
         // write your code here
         List<String> stageList = prepareStageList();
         String sea = "";
-        for(int i = 0; i < stageList.size(); i++){
-            if(i == stageList.size() - 1){
+        for (int i = 0; i < stageList.size(); i++) {
+            if (i == stageList.size() - 1) {
                 sea += stageList.get(i);
             }
         }
-        for(String stage : stageList) {
+        for (String stage : stageList) {
             if (stage.contains("l")) {
                 sea += stage;
             }
         }
         log(sea);
-//        correct answer => magiclampmagiclamp
-//        いまいちforeachメソッドの使い道がわからない
+        //        correct answer => magiclampmagiclamp
+        //        いまいちforeachメソッドの使い道がわからない
+        // TODO mizutani forEach()メソッドは、外側の変数を間違えて上書きしちゃわないようにブロックしてくれると、状況によっては安全なループと考えていいかも by jflute (2020/04/22)
+        // 外側の変数を上書きしないシンプルなループも多いから、その場合 forEach() であれば読む人も「あっ、外側の変数は上書きとかしてないな」ってすぐにわかります。
     }
 
     // ===================================================================================
