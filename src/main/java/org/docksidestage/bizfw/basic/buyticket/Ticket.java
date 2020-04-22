@@ -24,6 +24,7 @@ public class Ticket {
     //                                                                           Attribute
     //                                                                           =========
     private final int displayPrice;
+    private final int day;
     private boolean alreadyIn;
 
     // ===================================================================================
@@ -31,6 +32,11 @@ public class Ticket {
     //                                                                         ===========
     public Ticket(int displayPrice) {
         this.displayPrice = displayPrice;
+        this.day = 1;
+    }
+    public Ticket(int displayPrice,int day){
+        this.displayPrice = displayPrice;
+        this.day = day;
     }
 
     // ===================================================================================
@@ -48,6 +54,10 @@ public class Ticket {
     //                                                                            ========
     public int getDisplayPrice() {
         return displayPrice;
+    }
+
+    public int getDay(){
+        return day;
     }
 
     public boolean isAlreadyIn() {
