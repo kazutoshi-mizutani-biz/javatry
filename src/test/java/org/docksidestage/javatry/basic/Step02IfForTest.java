@@ -207,7 +207,7 @@ public class Step02IfForTest extends PlainTestCase {
         });
         sea = seaA[0];
         log(sea); // should be same as before-fix
-        //TODO mizutani_kazutoshi 愚直に実装してみたが汚いので想定解を知りたい
+        //愚直に実装してみたが汚いので想定解を知りたい
     }
 
     /**
@@ -216,12 +216,27 @@ public class Step02IfForTest extends PlainTestCase {
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
      * your question here (ここにあなたの質問を):
-     * 
+     * メソッド終了時の変数 sea の中身は？
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
     public void test_iffor_yourExercise() {
         // write your code here
+        List<String> stageList = prepareStageList();
+        String sea = "";
+        for(int i = 0; i < stageList.size(); i++){
+            if(i == stageList.size() - 1){
+                sea += stageList.get(i);
+            }
+        }
+        for(String stage : stageList) {
+            if (stage.contains("l")) {
+                sea += stage;
+            }
+        }
+        log(sea);
+//        correct answer => magiclampmagiclamp
+//        いまいちforeachメソッドの使い道がわからない
     }
 
     // ===================================================================================
