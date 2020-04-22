@@ -94,7 +94,8 @@ public class Step02IfForTest extends PlainTestCase {
         if (land) {
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 10
+//        correct answer => 10
     }
 
     // ===================================================================================
