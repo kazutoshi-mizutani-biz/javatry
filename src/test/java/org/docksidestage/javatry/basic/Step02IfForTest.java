@@ -192,23 +192,24 @@ public class Step02IfForTest extends PlainTestCase {
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
         String sea = null;
-        String[] seaA = { "" };
+        String[] seaArray = { "" };
         // TODO mizutani もう少し意味の付いた変数名にしたいですね by jflute (2020/04/22)
         // チャットでも投げましたが、booleanこそ意味が重要です。
         // なんとかフラグというboolean変数名: https://jflute.hatenadiary.jp/entry/20181013/flgornuance
-        Boolean[] flag = { true };
+        // CHANGED 変数名を若干変更しました by kazutoshi-mizutani-biz (2020/04/22)
+        Boolean[] isAppearedGaArray = { false };
         stageList.forEach(stage -> {
-            if (flag[0]) {
+            if (!isAppearedGaArray[0]) {
                 if (stage.startsWith("br")) {
                     return;
                 }
-                seaA[0] = stage;
+                seaArray[0] = stage;
                 if (stage.contains("ga")) {
-                    flag[0] = false;
+                    isAppearedGaArray[0] = true;
                 }
             }
         });
-        sea = seaA[0];
+        sea = seaArray[0];
         log(sea); // should be same as before-fix
         //愚直に実装してみたが汚いので想定解を知りたい
         // TODO mizutani [ふぉろー]まあ、ここは汚くなるので仕方がないです。元々のコードのロジックが汚いですからね by jflute (2020/04/22)
