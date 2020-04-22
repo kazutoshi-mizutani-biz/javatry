@@ -83,7 +83,9 @@ public class Step03DataTypeTest extends PlainTestCase {
         if (dstore > piari) {
             sea = 0;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 0
+//        correct answer => 2
+//        浮動小数点数の比較に注意!
     }
 
     // ===================================================================================
@@ -93,7 +95,7 @@ public class Step03DataTypeTest extends PlainTestCase {
     public void test_datatype_object() {
         St3ImmutableStage stage = new St3ImmutableStage("hangar");
         String sea = stage.getStageName();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
     }
 
     private static class St3ImmutableStage {
