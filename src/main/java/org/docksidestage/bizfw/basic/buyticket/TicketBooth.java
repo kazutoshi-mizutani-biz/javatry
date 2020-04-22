@@ -43,35 +43,48 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
-    public void buyOneDayPassport(int handedMoney) {
-        if (quantity <= 0) {
-            throw new TicketSoldOutException("Sold out");
-        }
-        if (handedMoney < ONE_DAY_PRICE) {
-            throw new TicketShortMoneyException("Short money: " + handedMoney);
-        }
-        --quantity;
-        if (salesProceeds != null) {
-            salesProceeds = salesProceeds + ONE_DAY_PRICE;
-        } else {
-            salesProceeds = ONE_DAY_PRICE;
-        }
+    public int buyOneDayPassport(int handedMoney) {
+        return buyPassport(handedMoney, 1);
     }
 
-    public int buyTwoDayPassport(int handedMoney){
-        if (quantity2 <= 0){
+    public int buyTwoDayPassport(int handedMoney) {
+        return buyPassport(handedMoney, 2);
+    }
+
+    public int buyPassport(int handedMoney, int day){
+        int price = 0;
+        int quan = 0;
+        switch(day){
+        case 1:
+            price = ONE_DAY_PRICE;
+            quan = quantity;
+            break;
+        case 2:
+            price = TWO_DAY_PRICE;
+            quan = quantity2;
+            break;
+        }
+        if (quan <= 0) {
             throw new TicketSoldOutException("Sold out");
         }
-        if (handedMoney < TWO_DAY_PRICE){
+        if (handedMoney < price) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
-        --quantity2;
-        if (salesProceeds != null){
-            salesProceeds = salesProceeds + TWO_DAY_PRICE;
-        } else {
-            salesProceeds = TWO_DAY_PRICE;
+        switch(day){
+        case 1:
+            --quantity;
+            break;
+        case 2:
+            --quantity2;
+            break;
         }
-        return handedMoney - TWO_DAY_PRICE;
+        if (salesProceeds != null) {
+            salesProceeds = salesProceeds + price;
+        } else {
+            salesProceeds = price;
+        }
+        return handedMoney - price;
+
     }
 
     public static class TicketSoldOutException extends RuntimeException {
