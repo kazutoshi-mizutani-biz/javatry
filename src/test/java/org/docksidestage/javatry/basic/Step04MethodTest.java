@@ -22,7 +22,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
  * (javadocの通りにエクササイズを実施。質問形式の場合はテストを実行する前に考えて答えを書いてみましょう)
  * @author jflute
- * @author your_name_here
+ * @author kazutoshi-mizutani-biz
  */
 public class Step04MethodTest extends PlainTestCase {
 
@@ -35,7 +35,8 @@ public class Step04MethodTest extends PlainTestCase {
      */
     public void test_method_call_basic() {
         String sea = supplySomething();
-        log(sea); // your answer? =>
+        log(sea); // your answer? = over
+//        correct answer => over
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
