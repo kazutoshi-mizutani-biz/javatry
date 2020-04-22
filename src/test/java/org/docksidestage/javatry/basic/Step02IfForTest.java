@@ -192,16 +192,22 @@ public class Step02IfForTest extends PlainTestCase {
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
         String sea = null;
-        for (String stage : stageList) {
-            if (stage.startsWith("br")) {
-                continue;
+        String[] seaA = {""};
+        Boolean[] flag = {true};
+        stageList.forEach(stage -> {
+            if(flag[0]) {
+                if (stage.startsWith("br")) {
+                    return;
+                }
+                seaA[0] = stage;
+                if (stage.contains("ga")) {
+                    flag[0] = false;
+                }
             }
-            sea = stage;
-            if (stage.contains("ga")) {
-                break;
-            }
-        }
+        });
+        sea = seaA[0];
         log(sea); // should be same as before-fix
+        //TODO mizutani_kazutoshi 愚直に実装してみたが汚いので想定解を知りたい
     }
 
     /**
