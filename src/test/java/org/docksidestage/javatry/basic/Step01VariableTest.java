@@ -198,7 +198,12 @@ public class Step01VariableTest extends PlainTestCase {
      */
     public void test_variable_writing() {
         // define variables here
+        String sea = "mystic";
+        Integer land = null;
+        log(sea, land, piari);
     }
+
+    public int piari;
 
     // ===================================================================================
     //                                                                           Good Luck
