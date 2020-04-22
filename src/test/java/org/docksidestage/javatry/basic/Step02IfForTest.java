@@ -123,7 +123,8 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => magiclamp
+//        correct answer => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
