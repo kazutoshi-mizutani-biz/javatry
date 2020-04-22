@@ -118,7 +118,8 @@ public class Step04MethodTest extends PlainTestCase {
         }
         ++sea;
         sea = inParkCount;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 100
+//        correct answer => 100
     }
 
     private void offAnnualPassport(boolean hasAnnualPassport) {
