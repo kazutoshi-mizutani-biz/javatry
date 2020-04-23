@@ -27,6 +27,8 @@ import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.unit.PlainTestCase;
 
+import org.docksidestage.bizfw.basic.objanimal.Penguin;
+
 /**
  * The test of object-oriented. <br>
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
@@ -329,6 +331,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeConcrete() {
         // your confirmation code here
+        Penguin penguin = new Penguin();
+        BarkedSound sound = penguin.bark();
+        String sea = sound.getBarkWord();
+        log(sea);
+        int land = penguin.getHitPoint();
+        log(land);
+        log((penguin instanceof FastRunner));
     }
 
     /**
