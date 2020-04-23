@@ -29,6 +29,7 @@ import org.docksidestage.unit.PlainTestCase;
 
 import org.docksidestage.bizfw.basic.objanimal.Penguin;
 import org.docksidestage.bizfw.basic.objanimal.Sleepable;
+import org.docksidestage.javatry.basic.st6.dbms.*;
 
 /**
  * The test of object-oriented. <br>
@@ -372,6 +373,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        St6MySql st6mySql = new St6MySql();
+        St6PostgreSql st6postgreSql = new St6PostgreSql();
+        boolean sea = st6mySql instanceof St6Sql;
+        boolean land = st6postgreSql instanceof St6Sql;
+        log(sea, land);
+//        output => true, true
     }
 
     /**
