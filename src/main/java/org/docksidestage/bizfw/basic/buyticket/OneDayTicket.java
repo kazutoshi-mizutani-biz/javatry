@@ -1,5 +1,6 @@
 package org.docksidestage.bizfw.basic.buyticket;
 
+// TODO mizutani javadocお願いしますー by jflute (2020/04/23)
 public class OneDayTicket implements Ticket {
 
     private final int displayPrice;
