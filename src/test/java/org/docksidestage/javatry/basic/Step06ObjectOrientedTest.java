@@ -30,6 +30,7 @@ import org.docksidestage.unit.PlainTestCase;
 import org.docksidestage.bizfw.basic.objanimal.Penguin;
 import org.docksidestage.bizfw.basic.objanimal.Sleepable;
 import org.docksidestage.javatry.basic.st6.dbms.*;
+import org.docksidestage.javatry.basic.st6.os.*;
 
 /**
  * The test of object-oriented. <br>
@@ -204,7 +205,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         int land = dog.getHitPoint();
         log(land); // your answer? => 10
 //        correct answer => 7
-//        NOTE: prepareAbdominalMuscle, breatheIn, doBark で 1 ずつ減る
+//        NOTE: prepareAbdominalMuscle, breatheIn, doBark で 1 ずつ減る by kazutoshi-mizutani-biz
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -379,6 +380,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         boolean land = st6postgreSql instanceof St6Sql;
         log(sea, land);
 //        output => true, true
+//        NOTE: 抽出ってこういうことでしょうか...? よくわからない by kazutoshi-mizutani-biz
     }
 
     /**
@@ -387,6 +389,15 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
+        St6Mac mac = new St6Mac("Fizz");
+        St6Windows windows = new St6Windows("Buzz");
+        String sea = mac.buildUserResourcePath("sea");
+        String land = windows.buildUserResourcePath("land");
+        log(sea);
+//        output => /Users/Fizz/sea
+        log(land);
+//        output => \Users\Buzz\land
+//        NOTE: 同上
     }
 
     // ===================================================================================

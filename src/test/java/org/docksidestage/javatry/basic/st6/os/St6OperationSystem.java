@@ -73,4 +73,12 @@ public class St6OperationSystem {
             throw new IllegalStateException("Unknown osType: " + osType);
         }
     }
+
+    protected void setOsType(String os){
+        this.osType = os;
+    }
+
+    protected String getOsType(){
+        return this.osType;
+    }
 }
