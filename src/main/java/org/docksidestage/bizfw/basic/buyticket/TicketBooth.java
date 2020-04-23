@@ -25,13 +25,15 @@ public class TicketBooth {
     //                                                                          ==========
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
-    private static final int TWO_DAY_PRICE = 13200; // when 2020/04/22
+    private static final int TWO_DAY_PRICE = 13200;
+    private static final int FOUR_DAY_PRICE = 22400;
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     private int quantity = MAX_QUANTITY;
     private int quantity2 = MAX_QUANTITY;
+    private int quantity4 = MAX_QUANTITY;
     private Integer salesProceeds;
 
     // ===================================================================================
@@ -57,6 +59,14 @@ public class TicketBooth {
         return tbr;
     }
 
+    public TicketBuyResult buyFourDayPassport(int handedMoney) {
+        int change = 0;
+        change = buyPassport(handedMoney, 4);
+        Ticket t = new MultiDaysTicket(FOUR_DAY_PRICE, 4);
+        TicketBuyResult tbr = new TicketBuyResult(t,change);
+        return tbr;
+    }
+
     public int buyPassport(int handedMoney, int day){
         int price = 0;
         int quan = 0;
@@ -68,6 +78,10 @@ public class TicketBooth {
         case 2:
             price = TWO_DAY_PRICE;
             quan = quantity2;
+            break;
+        case 4:
+            price = FOUR_DAY_PRICE;
+            quan = quantity4;
             break;
         }
         if (quan <= 0) {
@@ -83,6 +97,8 @@ public class TicketBooth {
         case 2:
             --quantity2;
             break;
+        case 4:
+            --quantity4;
         }
         if (salesProceeds != null) {
             salesProceeds = salesProceeds + price;
@@ -120,6 +136,10 @@ public class TicketBooth {
 
     public int getQuantity2(){
         return quantity2;
+    }
+
+    public int getQuantity4() {
+        return quantity4;
     }
 
     public Integer getSalesProceeds() {

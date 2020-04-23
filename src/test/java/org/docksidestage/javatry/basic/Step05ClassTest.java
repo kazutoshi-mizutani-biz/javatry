@@ -211,6 +211,13 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_wonder() {
         // your confirmation code here
+        TicketBooth booth = new TicketBooth();
+        int handedMoney = 25000;
+        TicketBuyResult fourDayPassportResult = booth.buyFourDayPassport(handedMoney);
+        Ticket fourDayPassport = fourDayPassportResult.getTicket();
+        int change = fourDayPassportResult.getChange();
+        fourDayPassport.doInPark();
+        log(fourDayPassport.getDisplayPrice(), change, fourDayPassport.getRemainingDays());
     }
 
     /**
