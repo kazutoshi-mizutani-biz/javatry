@@ -45,14 +45,14 @@ public class TicketBooth {
     //                                                                          ==========
     public Ticket buyOneDayPassport(int handedMoney) {
         buyPassport(handedMoney, 1);
-        Ticket t = new Ticket(ONE_DAY_PRICE, 1);
+        Ticket t = new OneDayTicket(ONE_DAY_PRICE);
         return t;
     }
 
     public TicketBuyResult buyTwoDayPassport(int handedMoney) {
         int change = 0;
         change = buyPassport(handedMoney, 2);
-        Ticket t = new Ticket(TWO_DAY_PRICE, 2);
+        Ticket t = new MultiDaysTicket(TWO_DAY_PRICE, 2);
         TicketBuyResult tbr = new TicketBuyResult(t,change);
         return tbr;
     }

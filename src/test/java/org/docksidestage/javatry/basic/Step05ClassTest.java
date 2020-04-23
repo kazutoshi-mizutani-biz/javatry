@@ -172,7 +172,7 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
         int change = twoDayPassportResult.getChange();
-        log(twoDayPassport.getDisplayPrice(), change, twoDayPassport.getDay());
+        log(twoDayPassport.getDisplayPrice(), change, twoDayPassport.getRemainingDays());
     }
 
     // ===================================================================================
@@ -196,6 +196,13 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_useInterface() {
         // your confirmation code here
+        TicketBooth booth = new TicketBooth();
+        int handedMoney = 20000;
+        TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
+        Ticket twoDayPassport = twoDayPassportResult.getTicket();
+        int change = twoDayPassportResult.getChange();
+        twoDayPassport.doInPark();
+        log(twoDayPassport.getDisplayPrice(), change, twoDayPassport.getRemainingDays());
     }
 
     /**

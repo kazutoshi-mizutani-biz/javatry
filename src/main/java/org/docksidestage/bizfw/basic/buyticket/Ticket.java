@@ -18,49 +18,11 @@ package org.docksidestage.bizfw.basic.buyticket;
 /**
  * @author jflute
  */
-public class Ticket {
+public interface Ticket {
 
-    // ===================================================================================
-    //                                                                           Attribute
-    //                                                                           =========
-    private final int displayPrice;
-    private final int day;
-    private boolean alreadyIn;
+    public void doInPark();
+    public boolean isAlreadyIn();
+    public int getDisplayPrice();
+    public int getRemainingDays();
 
-    // ===================================================================================
-    //                                                                         Constructor
-    //                                                                         ===========
-    public Ticket(int displayPrice) {
-        this.displayPrice = displayPrice;
-        this.day = 1;
-    }
-    public Ticket(int displayPrice,int day){
-        this.displayPrice = displayPrice;
-        this.day = day;
-    }
-
-    // ===================================================================================
-    //                                                                             In Park
-    //                                                                             =======
-    public void doInPark() {
-        if (alreadyIn) {
-            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
-        }
-        alreadyIn = true;
-    }
-
-    // ===================================================================================
-    //                                                                            Accessor
-    //                                                                            ========
-    public int getDisplayPrice() {
-        return displayPrice;
-    }
-
-    public int getDay(){
-        return day;
-    }
-
-    public boolean isAlreadyIn() {
-        return alreadyIn;
-    }
 }
