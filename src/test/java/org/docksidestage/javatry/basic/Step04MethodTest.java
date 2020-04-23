@@ -173,6 +173,7 @@ public class Step04MethodTest extends PlainTestCase {
         return s.replace("C","B");
     }
 
+    // TODO 引数名を再検討してみましょう winkichanwi
     private String addPrefix(String a, String b){
         return a + ":" + b;
     }
