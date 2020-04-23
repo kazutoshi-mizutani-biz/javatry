@@ -84,6 +84,10 @@ public abstract class Animal implements Loudable {
         }
     }
 
+    protected void upHitPoint(){
+        ++hitPoint;
+    }
+
     // ===================================================================================
     //                                                                               Loud
     //                                                                              ======

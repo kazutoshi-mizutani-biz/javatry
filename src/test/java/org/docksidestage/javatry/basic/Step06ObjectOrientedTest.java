@@ -28,6 +28,7 @@ import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.unit.PlainTestCase;
 
 import org.docksidestage.bizfw.basic.objanimal.Penguin;
+import org.docksidestage.bizfw.basic.objanimal.Sleepable;
 
 /**
  * The test of object-oriented. <br>
@@ -335,9 +336,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
         log(sea);
+//        correct answer => penpen-
         int land = penguin.getHitPoint();
         log(land);
+//        correct answer => 7
         log((penguin instanceof FastRunner));
+//        correct answer => false
     }
 
     /**
@@ -346,6 +350,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeInterface() {
         // your confirmation code here
+        Penguin penguin = new Penguin();
+        BarkedSound sound = penguin.bark();
+        String sea = sound.getBarkWord();
+        log(sea);
+//        correct answer => penpen-
+        penguin.sleep();
+        int land = penguin.getHitPoint();
+        log(land);
+//        correct answer => 8
+        log((penguin instanceof Sleepable));
+//        correct answer => true
     }
 
     // ===================================================================================

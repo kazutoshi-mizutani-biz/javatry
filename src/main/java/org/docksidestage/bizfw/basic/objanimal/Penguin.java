@@ -15,18 +15,26 @@
  */
 package org.docksidestage.bizfw.basic.objanimal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The object for penguin, so cute.
  * @author jflute
  * @author kazutoshi-mizutani-biz
  */
-public class Penguin extends Animal{
+public class Penguin extends Animal implements Sleepable{
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     public Penguin() {
     }
+
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    private static final Logger logger = LoggerFactory.getLogger(Penguin.class);
 
     // ===================================================================================
     //                                                                               Bark
@@ -37,15 +45,25 @@ public class Penguin extends Animal{
     }
 
     // ===================================================================================
+    //                                                                              Sleepable
+    //                                                                              ======
+
+    @Override
+    public void sleep() {
+        upHitPoint();
+        logger.debug("the penguin sleeps. so cute.");
+    }
+
+    // ===================================================================================
     //                                                                           Hit Point
     //                                                                           =========
     @Override
     protected void downHitPoint() {
         super.downHitPoint();
-        System.out.println("* the penguin with sorrowful eyes");
+        logger.debug("* the penguin with sorrowful eyes");
     }
 
     public void fly(){
-        System.out.println("Tips: penguins cannot fly.");
+        logger.debug("Tips: penguins cannot fly.");
     }
 }

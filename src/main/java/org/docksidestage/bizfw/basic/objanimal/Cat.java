@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * The object for cat(猫).
  * @author jflute
  */
-public class Cat extends Animal implements FastRunner {
+public class Cat extends Animal implements FastRunner , Sleepable{
 
     // ===================================================================================
     //                                                                          Definition
@@ -51,6 +51,16 @@ public class Cat extends Animal implements FastRunner {
     public void run() {
         // dummy implementation
         logger.debug("...Running now");
+    }
+
+    // ===================================================================================
+    //                                                                              Sleepable
+    //                                                                              ======
+
+    @Override
+    public void sleep() {
+        upHitPoint();
+        logger.debug("the cat sleeps. cute.");
     }
 
     // ===================================================================================

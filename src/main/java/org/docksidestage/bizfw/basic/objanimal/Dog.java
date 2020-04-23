@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * The object for dog(犬).
  * @author jflute
  */
-public class Dog extends Animal implements FastRunner {
+public class Dog extends Animal implements FastRunner , Sleepable{
 
     // ===================================================================================
     //                                                                         Constructor
@@ -44,5 +44,11 @@ public class Dog extends Animal implements FastRunner {
     public void run() {
         // dummy implementation
         logger.debug("...Running now");
+    }
+
+    @Override
+    public void sleep() {
+        upHitPoint();
+        logger.debug("the dog sleeps. cute.");
     }
 }
