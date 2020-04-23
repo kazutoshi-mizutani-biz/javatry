@@ -6,9 +6,9 @@ package org.docksidestage.bizfw.basic.buyticket;
 public class TicketBuyResult {
     private Ticket ticket;
     private int change;
-    public TicketBuyResult(Ticket t,int c){
-        this.ticket = t;
-        this.change = c;
+    public TicketBuyResult(Ticket boughtTicket,int change){
+        this.ticket = boughtTicket;
+        this.change = change;
     }
     public Ticket getTicket(){
         return ticket;

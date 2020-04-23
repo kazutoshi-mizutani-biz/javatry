@@ -112,9 +112,9 @@ public class Step05ClassTest extends PlainTestCase {
         // comment out after making the method
         TicketBooth booth = new TicketBooth();
         int money = 14000;
-//        int change = booth.buyTwoDayPassport(money);
-//        Integer sea = booth.getSalesProceeds() + change;
-//        log(sea); // should be same as money
+        int change = booth.buyTwoDayPassport(money).getChange();
+        Integer sea = booth.getSalesProceeds() + change;
+        log(sea); // should be same as money
 
         // and show two-day passport quantity here
         log(booth.getQuantity2());
@@ -226,5 +226,13 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_yourRefactoring() {
         // write confirmation code here
+        TicketBooth booth = new TicketBooth();
+        int handedMoney = 25000;
+        TicketBuyResult fourDayPassportResult = booth.buyFourDayPassport(handedMoney);
+        Ticket fourDayPassport = fourDayPassportResult.getTicket();
+        int change = fourDayPassportResult.getChange();
+        fourDayPassport.doInPark();
+        log(fourDayPassport.getDisplayPrice(), change, fourDayPassport.getRemainingDays());
+
     }
 }
