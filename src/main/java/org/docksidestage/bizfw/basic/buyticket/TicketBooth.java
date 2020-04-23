@@ -15,6 +15,7 @@
  */
 package org.docksidestage.bizfw.basic.buyticket;
 
+// TODO mizutani javadocにauthorをお願いしますー by jflute (2020/04/23)
 /**
  * @author jflute
  */
@@ -31,6 +32,8 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // TODO mizutani 細かいですが、この場合は quantity1 にしちゃったほうが誤解がないかもですね by jflute (2020/04/23)
+    // トータルの quantity みたいに一瞬見えてしまったりもしますし、2を使うべき場面で間違って quantity を使ってても気付きづらいです。
     private int quantity = MAX_QUANTITY;
     private int quantity2 = MAX_QUANTITY;
     private int quantity4 = MAX_QUANTITY;
@@ -47,6 +50,7 @@ public class TicketBooth {
     //                                                                          ==========
     public Ticket buyOneDayPassport(int handedMoney) {
         buyPassport(handedMoney, 1);
+        // TODO mizutani 細かいですが、直接returnしちゃっていいですよ return new OneDay...() by jflute (2020/04/23)
         Ticket t = new OneDayTicket(ONE_DAY_PRICE);
         return t;
     }
@@ -67,7 +71,14 @@ public class TicketBooth {
         return tbr;
     }
 
+    // TODO mizutani クラス内だけの再利用であれば、privateメソッドにしましょう (publicだと誰からでも呼べてしまう) by jflute (2020/04/23)
+    // TODO mizutani 一方で、Slackのtipsスレッドで書いたように、doBuy...() にしてみましょう by jflute (2020/04/23)
+    // IntelliJ の Rename の機能を使うと良いです。
     public int buyPassport(int handedMoney, int day){
+        // TODO mizutani せっかくpublicメソッドのbuyの方で 2 days とか 4 days の情報を指定しているのに... by jflute (2020/04/23)
+        // 再利用メソッドであるこのメソッド内でも 2 days とか 4 days を意識して分岐をしているのがもったいないですね。
+        // もし、7 days が増えた時、「publicメソッドも追加するし、この中で分岐も増やすし」となると、修正漏れが怖いですね。
+        // ただ、quantity周りはそんなに簡単ではないですね。。。
         int price = 0;
         int quan = 0;
         switch(day){
