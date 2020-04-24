@@ -9,6 +9,7 @@ import org.docksidestage.bizfw.debug.WordPool;
 
 /**
  * @author zaya
+ * @author kazutoshi-mizutani-biz
  */
 public class WordSorter implements Sorter<Word> {
     public List<Word> words;
@@ -28,6 +29,6 @@ public class WordSorter implements Sorter<Word> {
     public List<Word> sort(List<Word> list) {
         List<Sorter<Word>> sorters = Arrays.asList(new BubbleSorter(), new SelectionSorter(), new QuickSorter());
         int i = new Random().nextInt(sorters.size());
-        return sorters.get(i).sort(words);
+        return sorters.get(i).sort(list);
     }
 }
