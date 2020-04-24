@@ -14,6 +14,8 @@
  * governing permissions and limitations under the License.
  */
 package org.docksidestage.bizfw.basic.objanimal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The object for zombie(ゾンビ).
@@ -25,6 +27,8 @@ public class Zombie extends Animal {
     //                                                                           Attribute
     //                                                                           =========
     protected final ZombieDiary zombieDiary = new ZombieDiary();
+
+    private static final Logger logger = LoggerFactory.getLogger(Zombie.class);
 
     // ===================================================================================
     //                                                                         Constructor
@@ -53,9 +57,11 @@ public class Zombie extends Animal {
     // ===================================================================================
     //                                                                               Bark
     //                                                                              ======
-    @Override
+
     protected void breatheIn() {
-        super.breatheIn();
+//        super.breatheIn();
+        logger.debug("...Breathing in");
+        downHitPoint();
         zombieDiary.countBreatheIn();
     }
 

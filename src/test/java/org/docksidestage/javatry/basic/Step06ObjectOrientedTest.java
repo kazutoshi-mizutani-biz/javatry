@@ -409,6 +409,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
+        Penguin penguin = new Penguin();
+        BarkedSound sound = penguin.bark();
+        String sea = sound.getBarkWord();
+        log(sea);
+        //        correct answer => penpen-
+        penguin.sleep();
+        int land = penguin.getHitPoint();
+        log(land);
+        //        correct answer => 8
+        log((penguin instanceof Sleepable));
+        //        correct answer => true
     }
 
     /**
@@ -417,5 +428,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_zoo() {
         // do nothing here
+        // ZOMBIE IS NOT ANIMAL
+        // ... Because they are too special to be animal. (ex. infinite HP)
     }
 }

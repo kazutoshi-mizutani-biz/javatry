@@ -50,29 +50,27 @@ public abstract class Animal implements Loudable {
     //                                                                               Bark
     //                                                                              ======
     public BarkedSound bark() {
-        breatheIn();
-        prepareAbdominalMuscle();
-        String barkWord = getBarkWord();
-        BarkedSound barkedSound = doBark(barkWord);
+        BarkingProcess barkingProcess = new BarkingProcess(this);
+        BarkedSound barkedSound = barkingProcess.doBarkingProcess();
         return barkedSound;
     }
 
-    protected void prepareAbdominalMuscle() {
-        logger.debug("...Using my abdominal muscle"); // dummy implementation
-        downHitPoint();
-    }
-
-    protected void breatheIn() {
-        logger.debug("...Breathing in"); // dummy implementation
-        downHitPoint();
-    }
+//    protected void prepareAbdominalMuscle() {
+//        logger.debug("...Using my abdominal muscle"); // dummy implementation
+//        downHitPoint();
+//    }
+//
+//    protected void breatheIn() {
+//        logger.debug("...Breathing in"); // dummy implementation
+//        downHitPoint();
+//    }
 
     protected abstract String getBarkWord();
 
-    protected BarkedSound doBark(String barkWord) {
-        downHitPoint();
-        return new BarkedSound(barkWord);
-    }
+//    protected BarkedSound doBark(String barkWord) {
+//        downHitPoint();
+//        return new BarkedSound(barkWord);
+//    }
 
     // ===================================================================================
     //                                                                           Hit Point
