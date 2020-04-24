@@ -55,10 +55,10 @@ public class WordPool {
         return wordMap.get(id);
     }
 
-    public Word update(String language, String word1, String word2) {
-        Long id = findId(word2);
+    public Word update(String language, String oldWord, String newWord) {
+        Long id = findId(oldWord);
         wordMap.remove(id);
-        wordMap.put(id, new Word(new Language(language), word1));
+        wordMap.put(id, new Word(new Language(language), newWord));
         return wordMap.get(id);
     }
 
