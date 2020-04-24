@@ -15,6 +15,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Debug, fix the bug, make it green and save the world!
  * (テストの一部がバグ原因で落ちています。デバグして、バグを直して、テストを通るようにしてください。)
  * @author zaya
+ * @author kazutoshi-mizutani-biz
  */
 public class Step21WordPoolTest extends PlainTestCase {
 
@@ -62,7 +63,7 @@ public class Step21WordPoolTest extends PlainTestCase {
     public void test_findId() {
         // arrange
         WordPool pool = new WordPool();
-        List<String> words = Arrays.asList("私", "柿", "荼", "昂");
+        List<String> words = Arrays.asList("私", "柿", "荼", "昴");
 
         for (int i = 0; i < words.size(); i++) {
             // act
