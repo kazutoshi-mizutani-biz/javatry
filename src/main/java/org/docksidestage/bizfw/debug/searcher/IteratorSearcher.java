@@ -21,10 +21,14 @@ public class IteratorSearcher implements Searcher {
         Iterator<Word> iterator = words.iterator();
         while (iterator.hasNext()) {
             Word nextWord = iterator.next();
+            System.out.println("here1");
+            System.out.println("nextWord: " + nextWord.getWord() + ", searchingFor: " + searchingFor);
             if (nextWord.getWord().equals(searchingFor)) {
+                System.out.println("here2");
                 return nextWord;
             }
         }
+        System.out.println("here");
         throw new IllegalArgumentException("the word you are looking for is not here, word:" + searchingFor);
     }
 }
