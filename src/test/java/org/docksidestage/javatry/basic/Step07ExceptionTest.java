@@ -177,8 +177,16 @@ public class Step07ExceptionTest extends PlainTestCase {
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
             // What happens? Write situation and cause here. (何が起きた？状況と原因をここに書いてみましょう)
             // - - - - - - - - - -
+            // status:
+            // SupercarClient.buySupercarで呼び出される
+            // SupercarDealer.orderSupercarで呼び出される
+            // SupercarManufacturer.makeSupercarで呼び出される
+            // SupercarSteeringWheelManufacturer.makeSteeringWheelで呼び出される
+            // SpecialScrewManufacturer.makeSpecialScrewに渡されるspecTextに
+            // \(^_^)/が代入されている
             //
-            //
+            // cause:
+            // SupercarSteeringWheelComponentDB内のハッシュマップで適切なスペックが登録されていない
             //
             // _/_/_/_/_/_/_/_/_/_/
         }
