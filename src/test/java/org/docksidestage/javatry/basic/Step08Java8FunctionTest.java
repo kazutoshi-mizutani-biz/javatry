@@ -179,6 +179,7 @@ public class Step08Java8FunctionTest extends PlainTestCase {
         }
         // your answer? => yes
 //        correct answer => yes
+//        output is "1, broadway"
     }
 
     /**
@@ -194,7 +195,9 @@ public class Step08Java8FunctionTest extends PlainTestCase {
         optMember.ifPresent(member -> {
             log(member.getMemberId(), member.getMemberName());
         });
-        // your answer? => 
+        // your answer? => yes
+//        correct answer => yes
+//        output is "1, broadway"
     }
 
     /**
