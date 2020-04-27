@@ -219,6 +219,7 @@ public class Step07ExceptionTest extends PlainTestCase {
         } catch (St7ConstructorChallengeException e) {
             log("Thrown by help method", e); // should show also "Caused-by" information
         }
+        //TODO kazutoshi-miztuani-biz ちょっとどうやるかのが適切かわからないので他の方のコードを見るなりする by kazutoshi-mizutani-biz
     }
 
     private void helpSurprisedYabaiCatch() {
