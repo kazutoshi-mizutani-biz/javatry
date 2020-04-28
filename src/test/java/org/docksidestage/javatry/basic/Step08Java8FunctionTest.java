@@ -270,7 +270,8 @@ public class Step08Java8FunctionTest extends PlainTestCase {
         } catch (IllegalStateException e) {
             sea = e.getMessage();
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => wave
+//        correct answer => wave
     }
 
     // ===================================================================================
