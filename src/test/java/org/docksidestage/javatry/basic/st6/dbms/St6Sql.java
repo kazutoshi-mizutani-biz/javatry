@@ -7,7 +7,7 @@ public abstract class St6Sql {
 
     abstract String buildPagingQuery(int pageSize, int pageNumber);
 
-    int calculateOffset(int pageSize, int pageNumber){
+    public int calculateOffset(int pageSize, int pageNumber){
         return pageSize * (pageNumber - 1);
     }
 
