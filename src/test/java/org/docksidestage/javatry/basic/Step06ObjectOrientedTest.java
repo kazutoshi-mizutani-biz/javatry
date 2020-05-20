@@ -377,7 +377,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
-        // TODO mizutani buildPagingQuery() は、public にしないと、抽象クラスで扱うときにメソッドが呼べないです by jflute (2020/05/20)
+        // TODO mizutani buildPagingQuery() は、public にしないと、抽象クラスで扱うときにメソッドが呼べないです by jflute (2020/05/20) - DONE
         // TODO mizutani calculateOffset() は、外から呼ばれないと思うので、protected にしましょう by jflute (2020/05/20)
         // TODO mizutani 再利用自体はできていますね。ただ、テンプレートメソッドパターンではないですね by jflute (2020/05/20)
         // 11:30にsubaruさんがライブコーディングで説明してくれたやり方を思い出しましょう。
@@ -397,7 +397,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
-        // TODO mizutani St6OperationSystem で unused の警告が出ています (OS_TYPE_MACはもう使ってない？) by jflute (2020/05/20)
+        // TODO mizutani St6OperationSystem で unused の警告が出ています (OS_TYPE_MACはもう使ってない？) by jflute (2020/05/20) - DONE
         St6Mac mac = new St6Mac("Fizz");
         St6Windows windows = new St6Windows("Buzz");
         String sea = mac.buildUserResourcePath("sea");

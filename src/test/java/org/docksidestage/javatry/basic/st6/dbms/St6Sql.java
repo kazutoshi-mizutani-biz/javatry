@@ -5,7 +5,7 @@ package org.docksidestage.javatry.basic.st6.dbms;
  */
 public abstract class St6Sql {
 
-    abstract String buildPagingQuery(int pageSize, int pageNumber);
+    public abstract String buildPagingQuery(int pageSize, int pageNumber);
 
     public int calculateOffset(int pageSize, int pageNumber){
         return pageSize * (pageNumber - 1);
