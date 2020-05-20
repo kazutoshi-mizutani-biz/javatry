@@ -15,9 +15,14 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
+import org.docksidestage.bizfw.colorbox.space.BoxSpace;
 import org.docksidestage.bizfw.colorbox.yours.YourPrivateRoom;
 import org.docksidestage.unit.PlainTestCase;
 
@@ -53,6 +58,25 @@ public class Step12StreamStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長い文字列は？)
      */
     public void test_length_findMax() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        String answer = colorBoxList.stream()
+                .map(colorBox -> colorBox.getSpaceList())
+                //NOTE: ここもう少しなんとかなるのでは
+                .flatMap(colorBoxSpaceList -> {
+                    if (colorBoxSpaceList.size() <= 2) {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
+                    } else {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
+                    }
+                })
+                .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
+                .map(colorBoxSpace -> colorBoxSpace.toString())
+                .max(Comparator.comparingInt(String::length))
+                .orElse("*not found");
+        log(answer);
+        // my answer => おるどぐっとさいどすてーじ
+        // correct answer => おるぐどっくさいどすてーじ
+        // NOTE: stream全然分かってなかったようで、実装に恐ろしく時間がかかってしまった
     }
 
     /**
