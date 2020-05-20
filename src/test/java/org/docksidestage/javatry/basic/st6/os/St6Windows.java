@@ -8,4 +8,12 @@ public class St6Windows extends St6OperationSystem{
         super(loginId);
         setOsType("Windows");
     }
+    @Override
+    protected String getFileSeparator() {
+        return "\\";
+    }
+    @Override
+    protected String getUserDirectory() {
+        return "/Users/" + loginId;
+    }
 }

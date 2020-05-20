@@ -8,4 +8,12 @@ public class St6Mac extends St6OperationSystem{
         super(loginId);
         setOsType("Mac");
     }
+    @Override
+    protected String getFileSeparator() {
+        return "/";
+    }
+    @Override
+    protected String getUserDirectory() {
+        return "/Users/" + loginId;
+    }
 }

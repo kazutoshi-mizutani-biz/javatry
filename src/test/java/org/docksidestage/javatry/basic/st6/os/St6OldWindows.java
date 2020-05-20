@@ -8,4 +8,12 @@ public class St6OldWindows extends St6OperationSystem{
         super(loginId);
         setOsType("OldWindows");
     }
+    @Override
+    protected String getFileSeparator() {
+        return "\\";
+    }
+    @Override
+    protected String getUserDirectory() {
+        return "/Documents and Settigs/" + loginId;
+    }
 }

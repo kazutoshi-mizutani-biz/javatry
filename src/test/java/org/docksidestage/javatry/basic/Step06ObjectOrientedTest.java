@@ -391,7 +391,6 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
-        // TODO mizutani コンクリートクラスに抽出したからには、St6OperationSystem のOSごとのif分岐を無くしましょう by jflute (2020/05/20)
         St6Mac mac = new St6Mac("Fizz");
         St6Windows windows = new St6Windows("Buzz");
         String sea = mac.buildUserResourcePath("sea");
