@@ -25,7 +25,7 @@ import org.docksidestage.unit.PlainTestCase;
  * The test of String with color-box, using Stream API you can. <br>
  * Show answer by log() for question of javadoc.
  * @author jflute
- * @author your_name_here
+ * @author kazutoshi-mizutani-biz
  */
 public class Step12StreamStringTest extends PlainTestCase {
 
@@ -44,6 +44,8 @@ public class Step12StreamStringTest extends PlainTestCase {
                 .map(colorName -> colorName.length() + " (" + colorName + ")")
                 .orElse("*not found");
         log(answer);
+        // my answer => 5
+        // correct answer => 5
     }
 
     /**
