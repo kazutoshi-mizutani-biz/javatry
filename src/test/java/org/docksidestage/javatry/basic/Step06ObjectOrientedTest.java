@@ -376,9 +376,6 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
-        // TODO mizutani St6Sql の buildPagingQuery() が protected だと、抽象的に扱うときに呼び出せない by jflute (2020/05/20)
-        // TODO mizutani "int offset = pageSize * (pageNumber - 1);" も再利用したいですね by jflute (2020/05/20)
-        // "テンプレートメソッドパターン" (Template Method Pattern) を調べてみましょう
         St6MySql st6mySql = new St6MySql();
         St6PostgreSql st6postgreSql = new St6PostgreSql();
         boolean sea = st6mySql instanceof St6Sql;

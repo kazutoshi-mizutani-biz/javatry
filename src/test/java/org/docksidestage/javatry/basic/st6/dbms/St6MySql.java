@@ -23,7 +23,7 @@ public class St6MySql extends St6Sql{
 
     @Override
     public String buildPagingQuery(int pageSize, int pageNumber) {
-        int offset = pageSize * (pageNumber - 1);
+        int offset = calculateOffset(pageSize, pageNumber);
         return "limit " + offset + ", " + pageSize;
     }
 }
