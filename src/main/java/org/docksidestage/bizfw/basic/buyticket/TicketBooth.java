@@ -15,9 +15,9 @@
  */
 package org.docksidestage.bizfw.basic.buyticket;
 
-// TODO mizutani javadocにauthorをお願いしますー by jflute (2020/04/23)
 /**
  * @author jflute
+ * @author kazutoshi-mizutani-biz
  */
 public class TicketBooth {
 
@@ -32,9 +32,7 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    // TODO mizutani 細かいですが、この場合は quantity1 にしちゃったほうが誤解がないかもですね by jflute (2020/04/23)
-    // トータルの quantity みたいに一瞬見えてしまったりもしますし、2を使うべき場面で間違って quantity を使ってても気付きづらいです。
-    private int quantity = MAX_QUANTITY;
+    private int quantity1 = MAX_QUANTITY;
     private int quantity2 = MAX_QUANTITY;
     private int quantity4 = MAX_QUANTITY;
     private Integer salesProceeds;
@@ -50,9 +48,7 @@ public class TicketBooth {
     //                                                                          ==========
     public Ticket buyOneDayPassport(int handedMoney) {
         buyPassport(handedMoney, 1);
-        // TODO mizutani 細かいですが、直接returnしちゃっていいですよ return new OneDay...() by jflute (2020/04/23)
-        Ticket t = new OneDayTicket(ONE_DAY_PRICE);
-        return t;
+        return new OneDayTicket(ONE_DAY_PRICE);
     }
 
     public TicketBuyResult buyTwoDayPassport(int handedMoney) {
@@ -84,7 +80,7 @@ public class TicketBooth {
         switch(day){
         case 1:
             price = ONE_DAY_PRICE;
-            quan = quantity;
+            quan = quantity1;
             break;
         case 2:
             price = TWO_DAY_PRICE;
@@ -103,7 +99,7 @@ public class TicketBooth {
         }
         switch(day){
         case 1:
-            --quantity;
+            --quantity1;
             break;
         case 2:
             --quantity2;
@@ -142,7 +138,7 @@ public class TicketBooth {
     //                                                                            Accessor
     //                                                                            ========
     public int getQuantity() {
-        return quantity;
+        return quantity1;
     }
 
     public int getQuantity2(){

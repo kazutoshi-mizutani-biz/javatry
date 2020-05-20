@@ -242,10 +242,7 @@ public class Step02IfForTest extends PlainTestCase {
         }
         log(sea);
         //        correct answer => magiclampmagiclamp
-        //        いまいちforeachメソッドの使い道がわからない
-        // TODO mizutani forEach()メソッドは、外側の変数を間違えて上書きしちゃわないようにブロックしてくれると、状況によっては安全なループと考えていいかも by jflute (2020/04/22)
-        // 外側の変数を上書きしないシンプルなループも多いから、その場合 forEach() であれば読む人も「あっ、外側の変数は上書きとかしてないな」ってすぐにわかります。
-    }
+        }
 
     // ===================================================================================
     //                                                                        Small Helper
