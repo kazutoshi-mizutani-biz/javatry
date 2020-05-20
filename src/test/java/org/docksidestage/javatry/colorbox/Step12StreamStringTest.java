@@ -136,6 +136,24 @@ public class Step12StreamStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の長さの合計は？)
      */
     public void test_length_calculateLengthSum() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        int answer = colorBoxList.stream()
+                .map(colorBox -> colorBox.getSpaceList())
+                .flatMap(colorBoxSpaceList -> {
+                    if (colorBoxSpaceList.size() <= 2) {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
+                    } else {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
+                    }
+                })
+                .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
+                .map(colorBoxSpace -> colorBoxSpace.toString())
+                .map(colorBoxString -> colorBoxString.length())
+                .mapToInt(i -> i)
+                .sum();
+        log(answer);
+        // my answer => おるどぐっとさいどすてーじ + Waterfront = 23文字
+        // correct answer => 23
     }
 
     /**
