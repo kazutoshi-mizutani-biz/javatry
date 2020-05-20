@@ -55,8 +55,8 @@ public class Step07ExceptionTest extends PlainTestCase {
         Object exp = new IllegalStateException("mystic");
         boolean sea = exp instanceof RuntimeException;
         log(sea); // your answer? => false
-//        correct answer => true
-//        RuntimeException includes IllegalStateException
+        //        correct answer => true
+        //        RuntimeException includes IllegalStateException
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -64,7 +64,7 @@ public class Step07ExceptionTest extends PlainTestCase {
         Object exp = new IllegalStateException("mystic");
         boolean sea = exp instanceof Exception;
         log(sea); // your answer? => true
-//        correct answer => true
+        //        correct answer => true
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -72,8 +72,8 @@ public class Step07ExceptionTest extends PlainTestCase {
         Object exp = new IllegalStateException("mystic");
         boolean sea = exp instanceof Error;
         log(sea); // your answer? => true
-//        correct answer => false
-//        Exception not equals Error
+        //        correct answer => false
+        //        Exception not equals Error
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -81,7 +81,7 @@ public class Step07ExceptionTest extends PlainTestCase {
         Object exp = new IllegalStateException("mystic");
         boolean sea = exp instanceof Throwable;
         log(sea); // your answer? => true
-//        correct answer => true
+        //        correct answer => true
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -89,7 +89,7 @@ public class Step07ExceptionTest extends PlainTestCase {
         Object exp = new Throwable("mystic");
         boolean sea = exp instanceof Exception;
         log(sea); // your answer? => false
-//        correct answer => false
+        //        correct answer => false
     }
 
     // ===================================================================================
@@ -100,10 +100,14 @@ public class Step07ExceptionTest extends PlainTestCase {
      * (new java.io.File(".") の canonical path を取得してログに表示、I/Oエラーはメッセージとスタックトレースを代わりに)
      */
     public void test_exception_checkedException_basic() throws IOException {
-        try{
+        try {
             String canonicalPath = new File(".").getCanonicalPath();
             log(canonicalPath);
-        } catch(java.io.IOException IOError) {
+        } catch (java.io.IOException IOError) {
+            // TODO mizutani 例外の変数も変数なので、先頭は小文字が慣習です。単に e で大丈夫ですよ。eが慣習 by jflute (2020/05/20)
+            // TODO mizutani printStackTrace() でスタックトレースは確かに出るのですが、コンソールにしか出てきません by jflute (2020/05/20)
+            // 実務だと、ログファイルなど色々な記憶媒体に記録したいので、ログメソッドを経由します。
+            // log() メソッドの JavaDoc は読んでみましたか？ IntelliJ だと、メソッドにカーソル合わせて control + J かな？
             IOError.printStackTrace();
             log("cannot get the canonical path of java.io.File");
         }
@@ -128,11 +132,11 @@ public class Step07ExceptionTest extends PlainTestCase {
             sea = cause.getMessage();
             land = cause.getClass().getSimpleName();
             log(sea); // your answer? => Failed to call the second help method: -1
-//            correct answer => Failed to call the third help method: -1
+            //            correct answer => Failed to call the third help method: -1
             log(land); // your answer? => IllegalArgumentException
-//            correct answer => IllegalArgumentException
+            //            correct answer => IllegalArgumentException
             log(e); // your answer? => IllegalArgumentException
-//            correct answer => java.lang.IllegalStateException: Failed to call the second help method: -1
+            //            correct answer => java.lang.IllegalStateException: Failed to call the second help method: -1
         }
     }
 
@@ -187,6 +191,7 @@ public class Step07ExceptionTest extends PlainTestCase {
             //
             // cause:
             // SupercarSteeringWheelComponentDB内のハッシュマップで適切なスペックが登録されていない
+            // TODO mizutani 原因候補はこれだけだろうか？ by jflute (2020/05/20)
             //
             // _/_/_/_/_/_/_/_/_/_/
         }
@@ -199,6 +204,7 @@ public class Step07ExceptionTest extends PlainTestCase {
      */
     public void test_exception_translation_improveChallenge() {
         try {
+            // TODO mizutani 一つ前の debugChallenge で書いた status と cause が、もっと例外メッセージだけある程度わかるようにしたいですね by jflute (2020/05/20)
             new SupercarClient().buySupercar(); // you can fix the classes
             fail("always exception but none");
         } catch (RuntimeException e) {
