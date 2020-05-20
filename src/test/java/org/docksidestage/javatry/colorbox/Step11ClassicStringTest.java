@@ -31,7 +31,7 @@ import org.docksidestage.unit.PlainTestCase;
  * o don't fix the YourPrivateRoom class and color-box classes
  * </pre>
  * @author jflute
- * @author your_name_here
+ * @author kazutoshi-mizutani-biz
  */
 public class Step11ClassicStringTest extends PlainTestCase {
 
@@ -53,6 +53,8 @@ public class Step11ClassicStringTest extends PlainTestCase {
         } else {
             log("*not found");
         }
+        // my answer => 5
+        // correct answer => 5
     }
 
     /**
