@@ -84,6 +84,25 @@ public class Step12StreamStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長いものと短いものの差は何文字？)
      */
     public void test_length_findMaxMinDiff() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        List<Integer> stringLengthList = colorBoxList.stream()
+                .map(colorBox -> colorBox.getSpaceList())
+                .flatMap(colorBoxSpaceList -> {
+                    if (colorBoxSpaceList.size() <= 2) {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
+                    } else {
+                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
+                    }
+                })
+                .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
+                .map(colorBoxSpace -> colorBoxSpace.toString())
+                .map(colorBoxString -> colorBoxString.length())
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
+        int answer = stringLengthList.get(stringLengthList.size() - 1) - stringLengthList.get(0);
+        log(answer);
+        // my answer => おるどぐっとさいどすてーじ - Waterfront = 3文字
+        // correct answer => 3
     }
 
     // has small #adjustmemts from ClassicStringTest
