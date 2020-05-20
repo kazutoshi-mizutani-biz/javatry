@@ -21,16 +21,18 @@ import org.docksidestage.bizfw.basic.objanimal.Animal;
 import org.docksidestage.bizfw.basic.objanimal.BarkedSound;
 import org.docksidestage.bizfw.basic.objanimal.Cat;
 import org.docksidestage.bizfw.basic.objanimal.Dog;
+import org.docksidestage.bizfw.basic.objanimal.Penguin;
+import org.docksidestage.bizfw.basic.objanimal.Sleepable;
 import org.docksidestage.bizfw.basic.objanimal.Zombie;
 import org.docksidestage.bizfw.basic.objanimal.loud.AlarmClock;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
+import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
+import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
+import org.docksidestage.javatry.basic.st6.dbms.St6Sql;
+import org.docksidestage.javatry.basic.st6.os.St6Mac;
+import org.docksidestage.javatry.basic.st6.os.St6Windows;
 import org.docksidestage.unit.PlainTestCase;
-
-import org.docksidestage.bizfw.basic.objanimal.Penguin;
-import org.docksidestage.bizfw.basic.objanimal.Sleepable;
-import org.docksidestage.javatry.basic.st6.dbms.*;
-import org.docksidestage.javatry.basic.st6.os.*;
 
 /**
  * The test of object-oriented. <br>
@@ -159,7 +161,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // [do in park now!!!]
         //
-//        ticket.doInPark();
+        //        ticket.doInPark();
 
         // *doInPark() has this process:
         //if (alreadyIn) {
@@ -170,7 +172,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // [final process]
         //
-//        saveBuyingHistory(booth, ticket);
+        //        saveBuyingHistory(booth, ticket);
     }
 
     private void saveBuyingHistory(TicketBooth booth, Ticket ticket) {
@@ -201,11 +203,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = dog.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => wan
-//        correct answer => wan
+        //        correct answer => wan
         int land = dog.getHitPoint();
         log(land); // your answer? => 10
-//        correct answer => 7
-//        NOTE: prepareAbdominalMuscle, breatheIn, doBark で 1 ずつ減る by kazutoshi-mizutani-biz
+        //        correct answer => 7
+        //        NOTE: prepareAbdominalMuscle, breatheIn, doBark で 1 ずつ減る by kazutoshi-mizutani-biz
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -214,10 +216,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => wan
-//        correct answer => wan
+        //        correct answer => wan
         int land = animal.getHitPoint();
         log(land); // your answer? => 7
-//        correct answer => 7
+        //        correct answer => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -226,10 +228,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => wan
-//        correct answer => wan
+        //        correct answer => wan
         int land = animal.getHitPoint();
         log(land); // your answer? => 7
-//        correct answer => 7
+        //        correct answer => 7
     }
 
     private Animal createAnyAnimal() {
@@ -246,10 +248,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => wan
-//        correct answer => wan
+        //        correct answer => wan
         int land = animal.getHitPoint();
         log(land); // your answer? => 7
-//        correct answer => 7
+        //        correct answer => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -258,10 +260,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => nya-
-//        correct answer => nya-
+        //        correct answer => nya-
         int land = animal.getHitPoint();
         log(land); // your answer? => 5
-//        correct answer => 5
+        //        correct answer => 5
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -270,10 +272,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
         log(sea); // your answer? => uooo
-//        correct answer => uooo
+        //        correct answer => uooo
         int land = animal.getHitPoint();
         log(land); // your answer? => -1
-//        correct answer => -1
+        //        correct answer => -1
     }
 
     // ===================================================================================
@@ -284,10 +286,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Loudable loudable = new Zombie();
         String sea = loudable.soundLoudly();
         log(sea); // your answer? => uooo
-//        correct answer => uooo
+        //        correct answer => uooo
         String land = ((Zombie) loudable).bark().getBarkWord();
         log(land); // your answer? => uooo
-//        correct answer => uooo
+        //        correct answer => uooo
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -295,10 +297,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Loudable loudable = new AlarmClock();
         String sea = loudable.soundLoudly();
         log(sea); // your answer? => jiri jiri jiri---
-//        correct answer => jiri jiri jiri---
+        //        correct answer => jiri jiri jiri---
         boolean land = loudable instanceof Animal;
         log(land); // your answer? => false
-//        correct answer => false
+        //        correct answer => false
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -307,10 +309,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal landAnimal = new Zombie();
         boolean sea = seaAnimal instanceof FastRunner;
         log(sea); // your answer? => true
-//        correct answer => true
+        //        correct answer => true
         boolean land = landAnimal instanceof FastRunner;
         log(land); // your answer? => false
-//        correct answer => false
+        //        correct answer => false
     }
 
     /**
@@ -322,7 +324,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal dog = new Dog();
         boolean sea = dog instanceof FastRunner;
         log(sea);
-//        correct answer => true
+        //        correct answer => true
     }
 
     // ===================================================================================
@@ -338,12 +340,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
         log(sea);
-//        correct answer => penpen-
+        //        correct answer => penpen-
         int land = penguin.getHitPoint();
         log(land);
-//        correct answer => 7
+        //        correct answer => 7
         log((penguin instanceof FastRunner));
-//        correct answer => false
+        //        correct answer => false
     }
 
     /**
@@ -356,13 +358,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
         log(sea);
-//        correct answer => penpen-
+        //        correct answer => penpen-
         penguin.sleep();
         int land = penguin.getHitPoint();
         log(land);
-//        correct answer => 8
+        //        correct answer => 8
         log((penguin instanceof Sleepable));
-//        correct answer => true
+        //        correct answer => true
     }
 
     // ===================================================================================
@@ -374,13 +376,16 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        // TODO mizutani St6Sql の buildPagingQuery() が protected だと、抽象的に扱うときに呼び出せない by jflute (2020/05/20)
+        // TODO mizutani "int offset = pageSize * (pageNumber - 1);" も再利用したいですね by jflute (2020/05/20)
+        // "テンプレートメソッドパターン" (Template Method Pattern) を調べてみましょう
         St6MySql st6mySql = new St6MySql();
         St6PostgreSql st6postgreSql = new St6PostgreSql();
         boolean sea = st6mySql instanceof St6Sql;
         boolean land = st6postgreSql instanceof St6Sql;
         log(sea, land);
-//        output => true, true
-//        NOTE: 抽出ってこういうことでしょうか...? よくわからない by kazutoshi-mizutani-biz
+        //        output => true, true
+        //        NOTE: 抽出ってこういうことでしょうか...? よくわからない by kazutoshi-mizutani-biz
     }
 
     /**
@@ -389,15 +394,16 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
+        // TODO mizutani コンクリートクラスに抽出したからには、St6OperationSystem のOSごとのif分岐を無くしましょう by jflute (2020/05/20)
         St6Mac mac = new St6Mac("Fizz");
         St6Windows windows = new St6Windows("Buzz");
         String sea = mac.buildUserResourcePath("sea");
         String land = windows.buildUserResourcePath("land");
         log(sea);
-//        output => /Users/Fizz/sea
+        //        output => /Users/Fizz/sea
         log(land);
-//        output => \Users\Buzz\land
-//        NOTE: 同上
+        //        output => \Users\Buzz\land
+        //        NOTE: 同上
     }
 
     // ===================================================================================
@@ -409,6 +415,14 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
+        //
+        // TODO mizutani Animal の logger 変数が、unused の警告出ています by jflute (2020/05/20)
+        //
+        // TODO mizutani BarkingProcess の setBarkingAnimal() メソッドを必要かな？ by jflute (2020/05/20)
+        // つまり、BarkingProcess が Mutable なクラスである必要があるかな？
+        //
+        // TODO mizutani Zombie の breatheIn() の super.breatheIn(); はコメントアウトは何かな？ by jflute (2020/05/20)
+        // コメントアウトにはコメントアウトの理由を書いておきましょう。後で見た人が「なんだろう？」ってなってしまう。
         Penguin penguin = new Penguin();
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
