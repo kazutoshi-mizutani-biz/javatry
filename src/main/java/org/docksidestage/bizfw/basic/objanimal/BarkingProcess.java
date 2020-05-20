@@ -42,8 +42,4 @@ public class BarkingProcess {
         return barkingAnimal;
     }
 
-    public void setBarkingAnimal(Animal animal){
-        barkingAnimal = animal;
-    }
-
 }

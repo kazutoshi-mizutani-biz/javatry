@@ -26,11 +26,6 @@ import org.slf4j.LoggerFactory;
 public abstract class Animal implements Loudable {
 
     // ===================================================================================
-    //                                                                          Definition
-    //                                                                          ==========
-    private static final Logger logger = LoggerFactory.getLogger(Animal.class);
-
-    // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     protected int hitPoint;
@@ -55,22 +50,7 @@ public abstract class Animal implements Loudable {
         return barkedSound;
     }
 
-//    protected void prepareAbdominalMuscle() {
-//        logger.debug("...Using my abdominal muscle"); // dummy implementation
-//        downHitPoint();
-//    }
-//
-//    protected void breatheIn() {
-//        logger.debug("...Breathing in"); // dummy implementation
-//        downHitPoint();
-//    }
-
     protected abstract String getBarkWord();
-
-//    protected BarkedSound doBark(String barkWord) {
-//        downHitPoint();
-//        return new BarkedSound(barkWord);
-//    }
 
     // ===================================================================================
     //                                                                           Hit Point

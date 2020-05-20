@@ -411,14 +411,6 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
-        //
-        // TODO mizutani Animal の logger 変数が、unused の警告出ています by jflute (2020/05/20)
-        //
-        // TODO mizutani BarkingProcess の setBarkingAnimal() メソッドを必要かな？ by jflute (2020/05/20)
-        // つまり、BarkingProcess が Mutable なクラスである必要があるかな？
-        //
-        // TODO mizutani Zombie の breatheIn() の super.breatheIn(); はコメントアウトは何かな？ by jflute (2020/05/20)
-        // コメントアウトにはコメントアウトの理由を書いておきましょう。後で見た人が「なんだろう？」ってなってしまう。
         Penguin penguin = new Penguin();
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
