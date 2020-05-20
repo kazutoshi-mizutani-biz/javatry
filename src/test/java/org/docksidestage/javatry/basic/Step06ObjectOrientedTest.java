@@ -175,6 +175,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //        saveBuyingHistory(booth, ticket);
     }
 
+    // TODO mizutani コメントアウトしちゃったからかな？ unused の警告が出ていますね by jflute (2020/05/20)
     private void saveBuyingHistory(TicketBooth booth, Ticket ticket) {
         if (ticket.isAlreadyIn()) {
             // only logging here (normally e.g. DB insert)
@@ -376,8 +377,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        // TODO mizutani buildPagingQuery() は、public にしないと、抽象クラスで扱うときにメソッドが呼べないです by jflute (2020/05/20)
+        // TODO mizutani calculateOffset() は、外から呼ばれないと思うので、protected にしましょう by jflute (2020/05/20)
+        // TODO mizutani 再利用自体はできていますね。ただ、テンプレートメソッドパターンではないですね by jflute (2020/05/20)
+        // 11:30にsubaruさんがライブコーディングで説明してくれたやり方を思い出しましょう。
         St6MySql st6mySql = new St6MySql();
         St6PostgreSql st6postgreSql = new St6PostgreSql();
+        // TODO mizutani 抽象クラスの名前も、subaruさんが説明していましたので、もう少し適切な名前にしましょう by jflute (2020/05/20)
         boolean sea = st6mySql instanceof St6Sql;
         boolean land = st6postgreSql instanceof St6Sql;
         log(sea, land);
@@ -391,6 +397,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
+        // TODO mizutani St6OperationSystem で unused の警告が出ています (OS_TYPE_MACはもう使ってない？) by jflute (2020/05/20)
         St6Mac mac = new St6Mac("Fizz");
         St6Windows windows = new St6Windows("Buzz");
         String sea = mac.buildUserResourcePath("sea");
@@ -411,6 +418,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
+        // TODO mizutani Zombieの挙動はキープできていますか？ by jflute (2020/05/20)
         Penguin penguin = new Penguin();
         BarkedSound sound = penguin.bark();
         String sea = sound.getBarkWord();
