@@ -15,6 +15,7 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
@@ -54,6 +55,19 @@ public class Step13NumberTest extends PlainTestCase {
      * (カラーボックの中に入っている数値で、0から54までの値は何個ある？)
      */
     public void test_countZeroToFiftyFour_Number() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        long answer = colorBoxList.stream()
+                .flatMap(colorBox -> colorBox.getSpaceList().stream())
+                .map(boxSpace -> boxSpace.getContent())
+                .filter(content -> content instanceof Number)
+                // 数値比較のデファクトスタンダートってなんだろう？
+                .filter(content -> (new BigDecimal(content.toString())).compareTo(BigDecimal.valueOf(0L)) >= 0
+                        && (new BigDecimal(content.toString())).compareTo(BigDecimal.valueOf(54L)) <= 0)
+                .count();
+        log(answer);
+        // my answer => 2
+        // correct answer => 2
+        // colorBox.getUpperSpace().setContent(54.3); // trap ひっかかった！！！
     }
 
     /**
