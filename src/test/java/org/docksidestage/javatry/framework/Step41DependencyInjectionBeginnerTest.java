@@ -17,6 +17,7 @@ package org.docksidestage.javatry.framework;
 
 import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
+import org.docksidestage.bizfw.di.nondi.NonDiFactoryMethodAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -96,8 +97,36 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
      * (NonDiDirectSecondAction と NonDiFactoryMethodAction の違いは？)
      */
     public void test_nondi_difference_between_second_and_FactoryMethod() {
-        // your answer? => 
+        // your answer? =>
+        //  dog process においては後者はクラスメソッド内でAnimalクラスとしてTooLazyDogを作成する。
+        //  supercar process においては後者はクラスメソッド内でSupercarDealerクラスとしてメソッドがoverrideされたdealerを作成する。
         // and your confirmation code here freely
+        NonDiDirectSecondAction second = new NonDiDirectSecondAction();
+        NonDiFactoryMethodAction factory = new NonDiFactoryMethodAction();
+        System.out.println("@@@SECOND CALL FRIEND@@@");
+        second.callFriend();
+        System.out.println("@@@SECOND WAKE UP ME@@@");
+        try{
+            second.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.println("Exception message: " + e.getMessage());
+        }
+        System.out.println("@@@FACTORY CALL FRIEND@@@");
+        factory.callFriend();
+        System.out.println("@@@FACTORY WAKE UP ME@@@");
+        try{
+            factory.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.println("Exception message: " + e.getMessage());
+        }
+        System.out.println("@@@SECOND GO TO OFFICE@@@");
+        second.goToOffice();
+        System.out.println("@@@SECOND SEND GIFT@@@");
+        second.sendGift();
+        System.out.println("@@@FACTORY GO TO OFFICE@@@");
+        factory.goToOffice();
+        System.out.println("@@@FACTORY SEND GIFT@@@");
+        factory.sendGift();
     }
 
     /**
