@@ -18,6 +18,7 @@ package org.docksidestage.javatry.framework;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
 import org.docksidestage.bizfw.di.nondi.NonDiFactoryMethodAction;
+import org.docksidestage.bizfw.di.nondi.NonDiIndividualFactoryAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -134,8 +135,35 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
      * (NonDiFactoryMethodAction と NonDiIndividualFactoryAction の違いは？)
      */
     public void test_nondi_difference_between_FactoryMethod_and_IndividualFactory() {
-        // your answer? => 
+        // your answer? =>
+        //  NonDiIndividualFactoryActionはその中で使用するオブジェクトの作成をNonDiFactoryMethodActionに依存している。
         // and your confirmation code here freely
+        NonDiFactoryMethodAction factory = new NonDiFactoryMethodAction();
+        NonDiIndividualFactoryAction individual = new NonDiIndividualFactoryAction();
+        System.out.println("@@@FACTORY CALL FRIEND@@@");
+        factory.callFriend();
+        System.out.println("@@@FACTORY WAKE UP ME@@@");
+        try{
+            factory.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.println("Exception message: " + e.getMessage());
+        }
+        System.out.println("@@@INDIVIDUAL CALL FRIEND@@@");
+        individual.callFriend();
+        System.out.println("@@@INDIVIDUAL WAKE UP ME@@@");
+        try{
+            individual.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.println("Exception message: " + e.getMessage());
+        }
+        System.out.println("@@@FACTORY GO TO OFFICE@@@");
+        factory.goToOffice();
+        System.out.println("@@@FACTORY SEND GIFT@@@");
+        factory.sendGift();
+        System.out.println("@@@INDIVIDUAL GO TO OFFICE@@@");
+        individual.goToOffice();
+        System.out.println("@@@INDIVIDUAL SEND GIFT@@@");
+        individual.sendGift();
     }
 
     // ===================================================================================
