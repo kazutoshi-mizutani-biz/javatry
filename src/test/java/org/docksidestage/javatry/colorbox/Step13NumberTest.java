@@ -62,6 +62,7 @@ public class Step13NumberTest extends PlainTestCase {
                 .map(boxSpace -> boxSpace.getContent())
                 .filter(content -> content instanceof Number)
                 // 数値比較のデファクトスタンダートってなんだろう？
+                // -> doubleValue ?
                 .filter(content -> (new BigDecimal(content.toString())).compareTo(BigDecimal.valueOf(0L)) >= 0
                         && (new BigDecimal(content.toString())).compareTo(BigDecimal.valueOf(54L)) <= 0)
                 .count();

@@ -30,7 +30,7 @@ public class SupercarSteeringWheelComponentDB {
         clincherSpecMap = new HashMap<>();
         clincherSpecMap.put(1, "(Correct spec text)");
         clincherSpecMap.put(2, "(Correct spec text)");
-        clincherSpecMap.put(3, "\\(^_^)/");
+        clincherSpecMap.put(3, "(Correct spec text)");
     }
 
     public String findClincherSpecText(Integer clincherSpecId) {

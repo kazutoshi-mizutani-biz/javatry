@@ -15,13 +15,15 @@
  */
 package org.docksidestage.javatry.framework;
 
+import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
+import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
  * The test of Dependency Injection (DI) as beginner level. <br>
  * Show answer by log() or write answer on comment for question of javadoc.
  * @author jflute
- * @author your_name_here
+ * @author kazutoshi-mizutnai-biz
  */
 public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
 
@@ -37,7 +39,15 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
         // What is Dependency Injection?
         // - - - - - (your answer?)
         //
+        // 依存性の注入
+        // dependency injection is a technique in which an object receives other objects that it depends on.
         //
+        // あるコンポーネントが利用している別のコンポーネントを前者の内部で生成するのではなく、生成したものを渡して実行させることで、
+        // 実装の際の依存性をなくし、機能がカスタムされたコンポーネントを使用する際に前者を書き換えなくてもすませる方法？
+        //
+        // ・constructor injection
+        // ・setter injection
+        // ・interface injection
         //
         // _/_/_/_/_/_/_/_/_/_/
     }
@@ -50,8 +60,35 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
      * (NonDiDirectFirstAction と NonDiDirectSecondAction の違いは？)
      */
     public void test_nondi_difference_between_first_and_second() {
-        // your answer? => 
+        // your answer? =>
+        //  dog processにおいて前者はdogを、後者はlazy dogを作成する。
+        //  lazy dogは petMeして playWithしないとbarkしないし、しても代わりにfriendのcatがbarkする
+        //  wakeupMeの場合、barkが3回されるので、3回目に猫が疲れてしまう
+        //  supercar processにおいて
+        //  secondはSupercarManufacturerのmakeSuperCarクラスを「...making supercar by {}」を表示してから実行するようにoverrideしている
         // and your confirmation code here freely
+        NonDiDirectFirstAction first = new NonDiDirectFirstAction();
+        NonDiDirectSecondAction second = new NonDiDirectSecondAction();
+        System.out.println("@@@FIRST CALL FRIEND@@@");
+        first.callFriend();
+        System.out.println("@@@FIRST WAKE UP ME@@@");
+        first.wakeupMe();
+        System.out.println("@@@SECOND CALL FRIEND@@@");
+        second.callFriend();
+        System.out.println("@@@SECOND WAKE UP ME@@@");
+        try{
+            second.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.println("Exception message: " + e.getMessage());
+        }
+        System.out.println("@@@FIRST GO TO OFFICE@@@");
+        first.goToOffice();
+        System.out.println("@@@FIRST SEND GIFT@@@");
+        first.sendGift();
+        System.out.println("@@@SECOND GO TO OFFICE@@@");
+        second.goToOffice();
+        System.out.println("@@@SECOND SEND GIFT@@@");
+        second.sendGift();
     }
 
     /**
