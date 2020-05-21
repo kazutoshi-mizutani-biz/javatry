@@ -16,6 +16,7 @@
 package org.docksidestage.javatry.colorbox;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
@@ -75,6 +76,21 @@ public class Step13NumberTest extends PlainTestCase {
      * (カラーボックスの中で、Integer型の Content を持っていてBoxSizeの幅が一番大きいカラーボックスの色は？)
      */
     public void test_findColorBigWidthHasInteger() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        String answer = colorBoxList.stream()
+                .filter(colorBox -> {
+                    return colorBox.getSpaceList().stream()
+                                .map(boxSpace -> boxSpace.getContent())
+                                .anyMatch(content -> content instanceof Integer);
+                })
+                .sorted((box1,box2) -> box2.getSize().getWidth() - box1.getSize().getWidth())
+                .map(colorBox -> colorBox.getColor())
+                .map(color -> color.getColorName())
+                .findFirst()
+                .orElse("* not found");
+        log(answer);
+        // my answer => green
+        // correct answer => green
     }
 
     /**
