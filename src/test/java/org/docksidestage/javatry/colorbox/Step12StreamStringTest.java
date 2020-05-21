@@ -17,7 +17,6 @@ package org.docksidestage.javatry.colorbox;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,13 +61,7 @@ public class Step12StreamStringTest extends PlainTestCase {
         String answer = colorBoxList.stream()
                 .map(colorBox -> colorBox.getSpaceList())
                 //NOTE: ここもう少しなんとかなるのでは
-                .flatMap(colorBoxSpaceList -> {
-                    if (colorBoxSpaceList.size() <= 2) {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
-                    } else {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
-                    }
-                })
+                .flatMap(colorBoxSpaceList -> colorBoxSpaceList.stream())
                 .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
                 .map(colorBoxSpace -> colorBoxSpace.toString())
                 .max(Comparator.comparingInt(String::length))
@@ -87,13 +80,7 @@ public class Step12StreamStringTest extends PlainTestCase {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
         List<Integer> stringLengthList = colorBoxList.stream()
                 .map(colorBox -> colorBox.getSpaceList())
-                .flatMap(colorBoxSpaceList -> {
-                    if (colorBoxSpaceList.size() <= 2) {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
-                    } else {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
-                    }
-                })
+                .flatMap(colorBoxSpaceList -> colorBoxSpaceList.stream())
                 .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
                 .map(colorBoxSpace -> colorBoxSpace.toString())
                 .map(colorBoxString -> colorBoxString.length())
@@ -115,13 +102,7 @@ public class Step12StreamStringTest extends PlainTestCase {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
         List<String> stringList = colorBoxList.stream()
                 .map(colorBox -> colorBox.getSpaceList())
-                .flatMap(colorBoxSpaceList -> {
-                    if (colorBoxSpaceList.size() <= 2) {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
-                    } else {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
-                    }
-                })
+                .flatMap(colorBoxSpaceList -> colorBoxSpaceList.stream())
                 .map(colorBoxSpace -> colorBoxSpace.toString())
                 .sorted(Comparator.comparingInt(String::length).reversed())
                 .collect(Collectors.toList());
@@ -139,13 +120,7 @@ public class Step12StreamStringTest extends PlainTestCase {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
         int answer = colorBoxList.stream()
                 .map(colorBox -> colorBox.getSpaceList())
-                .flatMap(colorBoxSpaceList -> {
-                    if (colorBoxSpaceList.size() <= 2) {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1));
-                    } else {
-                        return Stream.of(colorBoxSpaceList.get(0), colorBoxSpaceList.get(1), colorBoxSpaceList.get(2));
-                    }
-                })
+                .flatMap(colorBoxSpaceList -> colorBoxSpaceList.stream())
                 .filter(colorBoxSpace -> colorBoxSpace.getContent() instanceof String)
                 .map(colorBoxSpace -> colorBoxSpace.toString())
                 .map(colorBoxString -> colorBoxString.length())
@@ -180,6 +155,24 @@ public class Step12StreamStringTest extends PlainTestCase {
      * ("Water" で始まる文字列をしまっているカラーボックスの色は？)
      */
     public void test_startsWith_findFirstWord() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        String answer = colorBoxList.stream()
+                .filter(colorBox -> {
+                    boolean isContainStringStartWithWater = false;
+                    for(BoxSpace colorBoxSpace : colorBox.getSpaceList()){
+                        System.out.println("@");
+                        System.out.println(colorBoxSpace.getContent().toString());
+                        if (colorBoxSpace.getContent().toString().startsWith("Water")) isContainStringStartWithWater = true;
+                    }
+                    return isContainStringStartWithWater;
+                })
+                .map(colorBox -> colorBox.getColor())
+                .map(boxColor -> boxColor.getColorName())
+                .findFirst()
+                .orElse("* not found");
+        log(answer);
+        // my answer => red;
+        // correct answer =>
     }
 
     /**
