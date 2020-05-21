@@ -15,10 +15,16 @@
  */
 package org.docksidestage.javatry.framework;
 
+import org.docksidestage.bizfw.basic.objanimal.Animal;
+import org.docksidestage.bizfw.basic.objanimal.Dog;
+import org.docksidestage.bizfw.basic.supercar.SupercarDealer;
+import org.docksidestage.bizfw.di.container.SimpleDiContainer;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
 import org.docksidestage.bizfw.di.nondi.NonDiFactoryMethodAction;
 import org.docksidestage.bizfw.di.nondi.NonDiIndividualFactoryAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiAccessorAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiAnnotationAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -174,8 +180,36 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
      * (UsingDiAccessorAction と UsingDiAnnotationAction の違いは？)
      */
     public void test_usingdi_difference_between_Accessor_and_Annotation() {
-        // your answer? => 
+        // your answer? =>
+        //  UsingDiAccessorActionではsetterによるDIを実装している。
+        //  UsingDiAnnotationActionではannotationを用いてDIコンテナを利用する。
         // and your confirmation code here freely
+        UsingDiAccessorAction accessor = new UsingDiAccessorAction();
+
+        accessor.setAnimal(new Dog());
+        accessor.callFriend();
+        accessor.wakeupMe();
+
+        accessor.setSupercarDealer(new SupercarDealer());
+        accessor.goToOffice();
+        accessor.sendGift();
+
+        SimpleDiContainer container = SimpleDiContainer.getInstance();
+        container.registerModule(componentMap -> {
+            componentMap.put(UsingDiAnnotationAction.class, new UsingDiAnnotationAction());
+            componentMap.put(Animal.class, new Dog());
+            componentMap.put(SupercarDealer.class, new SupercarDealer());
+        });
+        container.resolveDependency();
+
+        UsingDiAnnotationAction annotation =
+                (UsingDiAnnotationAction) container.getComponent(UsingDiAnnotationAction.class);
+        annotation.callFriend();
+        annotation.wakeupMe();
+        annotation.goToOffice();
+        annotation.sendGift();
+
+
     }
 
     /**
