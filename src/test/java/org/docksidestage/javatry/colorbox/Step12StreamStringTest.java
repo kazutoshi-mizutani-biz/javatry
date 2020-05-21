@@ -156,23 +156,24 @@ public class Step12StreamStringTest extends PlainTestCase {
      */
     public void test_startsWith_findFirstWord() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
-        String answer = colorBoxList.stream()
+        List<String> answer = colorBoxList.stream()
                 .filter(colorBox -> {
-                    boolean isContainStringStartWithWater = false;
-                    for(BoxSpace colorBoxSpace : colorBox.getSpaceList()){
-                        System.out.println("@");
-                        System.out.println(colorBoxSpace.getContent().toString());
-                        if (colorBoxSpace.getContent().toString().startsWith("Water")) isContainStringStartWithWater = true;
+                    boolean isContainingStringStartsWithWater = false;
+                    for(BoxSpace boxSpace : colorBox.getSpaceList()){
+                        if(boxSpace.getContent() != null){
+                            if(boxSpace.getContent() instanceof String) {
+                                isContainingStringStartsWithWater = boxSpace.getContent().toString().startsWith("Water");
+                            }
+                        }
                     }
-                    return isContainStringStartWithWater;
+                    return isContainingStringStartsWithWater;
                 })
                 .map(colorBox -> colorBox.getColor())
                 .map(boxColor -> boxColor.getColorName())
-                .findFirst()
-                .orElse("* not found");
+                .collect(Collectors.toList());
         log(answer);
-        // my answer => red;
-        // correct answer =>
+        // my answer => red
+        // correct answer => red
     }
 
     /**
