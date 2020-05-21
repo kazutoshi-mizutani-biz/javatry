@@ -25,6 +25,8 @@ import org.docksidestage.bizfw.di.nondi.NonDiFactoryMethodAction;
 import org.docksidestage.bizfw.di.nondi.NonDiIndividualFactoryAction;
 import org.docksidestage.bizfw.di.usingdi.UsingDiAccessorAction;
 import org.docksidestage.bizfw.di.usingdi.UsingDiAnnotationAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiDelegatingAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiDelegatingLogic;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -217,8 +219,37 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
      * (UsingDiAnnotationAction と UsingDiDelegatingAction の違いは？)
      */
     public void test_usingdi_difference_between_Annotation_and_Delegating() {
-        // your answer? => 
+        // your answer? =>
+        //  UsingDiDelegationActionはUsingDiDelegationLogicを仲介し、機能だけを実装しているが、
+        //  あまりメリットがわからない...?
         // and your confirmation code here freely
+        SimpleDiContainer container = SimpleDiContainer.getInstance();
+        container.registerModule(componentMap -> {
+            componentMap.put(UsingDiAnnotationAction.class, new UsingDiAnnotationAction());
+            componentMap.put(UsingDiDelegatingAction.class, new UsingDiDelegatingAction());
+            componentMap.put(UsingDiDelegatingLogic.class, new UsingDiDelegatingLogic());
+            componentMap.put(Animal.class, new Dog());
+            componentMap.put(SupercarDealer.class, new SupercarDealer());
+        });
+        container.resolveDependency();
+
+        UsingDiAnnotationAction annotation =
+                (UsingDiAnnotationAction) container.getComponent(UsingDiAnnotationAction.class);
+        annotation.callFriend();
+        annotation.wakeupMe();
+        annotation.goToOffice();
+        annotation.sendGift();
+
+        UsingDiDelegatingAction delegating =
+                (UsingDiDelegatingAction) container.getComponent(UsingDiDelegatingAction.class);
+        delegating.callFriend();
+        try {
+            delegating.wakeupMe();
+        } catch (IllegalStateException e){
+            System.out.print(e.getMessage());
+        }
+        delegating.goToOffice();
+        delegating.sendGift();
     }
 
     // ===================================================================================
